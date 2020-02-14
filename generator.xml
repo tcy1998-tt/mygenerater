@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 去掉自动生成的注解 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql:///info?useUnicode=true&amp;charactorEncoding=utf-8"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+        <!--是否把int double 强转转换为decimal  -->
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!--将生成的bean对象存放位置-->
+        <javaModelGenerator targetPackage="com.offcn.bean" targetProject=".\src">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.offcn.mapper"  targetProject=".\src">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.offcn.dao"  targetProject=".\src">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!--根据该表生成相应的mapper和bean-->
+        <table tableName="emp"></table>
+    </context>
+</generatorConfiguration>
